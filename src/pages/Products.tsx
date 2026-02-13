@@ -64,9 +64,14 @@ const Products = () => {
             </span>
             <div className="flex items-center justify-center gap-3 mb-4">
               <Zap className="text-primary" size={32} />
-              <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground">
+              <a
+                href="https://clawapi.io/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-display text-3xl sm:text-4xl font-bold text-foreground hover:text-primary transition-colors"
+              >
                 ClawAPI
-              </h2>
+              </a>
             </div>
             <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed text-lg">
               The unified AI gateway that handles multi-model routing, intelligent fallbacks, cost optimization,

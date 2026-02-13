@@ -118,9 +118,14 @@ const Index = () => {
             </span>
             <div className="flex items-center justify-center gap-3 mb-4">
               <Zap className="text-primary" size={28} />
-              <h2 className="font-display text-2xl sm:text-3xl font-bold text-foreground">
+              <a
+                href="https://clawapi.io/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-display text-2xl sm:text-3xl font-bold text-foreground hover:text-primary transition-colors"
+              >
                 ClawAPI
-              </h2>
+              </a>
             </div>
             <p className="text-muted-foreground max-w-xl mx-auto mb-8 leading-relaxed">
               The AI gateway built by operators, for operators. Multi-model routing, intelligent fallbacks,

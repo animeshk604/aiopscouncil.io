@@ -168,7 +168,7 @@ const Join = () => {
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li>• Access to private channels with top AI operators</li>
                 <li>• Exclusive war stories & architecture reviews</li>
-                <li>• Early access to council-built tools (ClawAPI)</li>
+                <li>• Early access to council-built tools (<a href="https://clawapi.io/" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-secondary transition-colors">ClawAPI</a>)</li>
                 <li>• A network that actually understands your work</li>
               </ul>
             </motion.div>
