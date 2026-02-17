@@ -9,7 +9,7 @@ const router = Router();
 const dynamoClient = new DynamoDBClient({ region: 'us-east-1' });
 const docClient = DynamoDBDocumentClient.from(dynamoClient);
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || '', { apiVersion: '2024-04-10' });
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || '', { apiVersion: '2023-10-16' });
 const JWT_SECRET = process.env.JWT_SECRET || 'aiops-council-secret-2026';
 const CONSOLE_URL = process.env.CONSOLE_URL || 'http://localhost:5173';
 
