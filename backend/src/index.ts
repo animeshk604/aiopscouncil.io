@@ -4,6 +4,7 @@ import authRoutes from './routes/auth.js';
 import applicationRoutes from './routes/applications.js';
 import membershipRoutes from './routes/membership.js';
 import webhookRoutes from './routes/webhook.js';
+import oauthRoutes from './routes/oauth.js';
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -27,6 +28,7 @@ app.get('/health', (req, res) => {
 
 // Routes
 app.use('/auth', authRoutes);
+app.use('/auth', oauthRoutes);  // OAuth routes (google, discord, github)
 app.use('/applications', applicationRoutes);
 app.use('/membership', membershipRoutes);
 

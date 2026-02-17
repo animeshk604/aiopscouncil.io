@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useToast } from "@/hooks/use-toast";
@@ -12,6 +12,7 @@ import {
   createCheckoutSession,
   createPortalSession,
   logout,
+  setToken,
 } from "@/lib/api";
 
 const BENEFITS = [
@@ -26,19 +27,32 @@ const BENEFITS = [
 const Membership = () => {
   const { toast } = useToast();
   const navigate = useNavigate();
+  const location = useLocation();
   const [loading, setLoading] = useState(true);
   const [checkoutLoading, setCheckoutLoading] = useState(false);
   const [user, setUser] = useState<any>(null);
   const [membership, setMembership] = useState<any>(null);
 
   useEffect(() => {
+    // Check for OAuth token in URL hash
+    const hash = location.hash;
+    if (hash && hash.includes('token=')) {
+      const token = hash.split('token=')[1];
+      if (token) {
+        setToken(token);
+        // Remove hash from URL
+        window.history.replaceState(null, '', location.pathname);
+        toast({ title: "Welcome!" });
+      }
+    }
+
     if (!isLoggedIn()) {
       navigate("/login");
       return;
     }
 
     loadData();
-  }, []);
+  }, [location]);
 
   const loadData = async () => {
     try {
