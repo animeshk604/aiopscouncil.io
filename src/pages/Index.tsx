@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import FeatureCard from "@/components/FeatureCard";
-import { Bot, Brain, DollarSign, Shield, GitBranch, Activity, Zap } from "lucide-react";
+import { Bot, Brain, DollarSign, Shield, GitBranch, Activity, Zap, Linkedin } from "lucide-react";
 
 const container = {
   hidden: {},
@@ -100,6 +100,74 @@ const Index = () => {
               <FeatureCard key={topic.title} {...topic} index={i} />
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Council Operators */}
+      <section className="relative z-10 py-24 px-4">
+        <div className="max-w-6xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="font-display text-2xl sm:text-3xl font-bold gradient-text text-glow-cyan mb-4">
+              Council Leadership
+            </h2>
+            <p className="text-muted-foreground max-w-xl mx-auto">
+              Experienced operators guiding discussions and maintaining our signal-to-noise ratio.
+            </p>
+          </motion.div>
+
+          <div className="flex justify-center">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="glass-card rounded-2xl p-8 text-center max-w-sm"
+            >
+              <div className="w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden border-2 border-primary/30">
+                <img
+                  src="/edward.png"
+                  alt="Edward Unthank"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <h3 className="font-display text-xl font-bold text-foreground mb-1">
+                Edward Unthank
+              </h3>
+              <p className="text-primary text-sm font-medium mb-3">Moderator</p>
+              <p className="text-muted-foreground text-sm mb-4">
+                AI infrastructure veteran helping operators scale production systems.
+              </p>
+              <a
+                href="https://www.linkedin.com/in/edwardunthank/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
+              >
+                <Linkedin size={16} />
+                Connect on LinkedIn
+              </a>
+            </motion.div>
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="text-center mt-12"
+          >
+            <Link
+              to="/operators"
+              className="inline-flex items-center px-6 py-2 rounded-full border border-border text-muted-foreground hover:text-foreground hover:border-primary/40 transition-all text-sm font-medium"
+            >
+              View All Operators →
+            </Link>
+          </motion.div>
         </div>
       </section>
 
