@@ -60,8 +60,14 @@ const Navbar = () => {
             ))}
           </div>
 
-          {/* Apply button */}
-          <div className="hidden md:block">
+          {/* Action buttons */}
+          <div className="hidden md:flex items-center gap-4">
+            <Link
+              to="/login"
+              className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
+            >
+              Member Login
+            </Link>
             <Link
               to="/join"
               className="glow-button inline-flex items-center px-5 py-2 rounded-full bg-background text-primary text-sm font-semibold tracking-wide"
@@ -103,6 +109,12 @@ const Navbar = () => {
                   {link.label}
                 </Link>
               ))}
+              <Link
+                to="/login"
+                className="block text-center px-5 py-2 text-sm text-muted-foreground hover:text-primary"
+              >
+                Member Login
+              </Link>
               <Link
                 to="/join"
                 className="glow-button block text-center px-5 py-2 rounded-full bg-background text-primary text-sm font-semibold mt-2"

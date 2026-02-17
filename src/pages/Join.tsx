@@ -3,7 +3,8 @@ import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useToast } from "@/hooks/use-toast";
-import { Target, Gift } from "lucide-react";
+import { Target, Gift, Loader2 } from "lucide-react";
+import { submitApplication } from "@/lib/api";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
@@ -17,6 +18,7 @@ const container = {
 
 const Join = () => {
   const { toast } = useToast();
+  const [loading, setLoading] = useState(false);
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -26,13 +28,26 @@ const Join = () => {
     warStory: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast({
-      title: "Application Received",
-      description: "We'll review your application and get back to you soon.",
-    });
-    setForm({ name: "", email: "", role: "", company: "", experience: "", warStory: "" });
+    setLoading(true);
+
+    try {
+      await submitApplication(form);
+      toast({
+        title: "Application Received!",
+        description: "Check your email for confirmation. We'll review your application within 5-7 business days.",
+      });
+      setForm({ name: "", email: "", role: "", company: "", experience: "", warStory: "" });
+    } catch (error: any) {
+      toast({
+        title: "Submission Failed",
+        description: error.message || "Please try again later.",
+        variant: "destructive",
+      });
+    } finally {
+      setLoading(false);
+    }
   };
 
   const inputClasses =
@@ -127,9 +142,17 @@ const Join = () => {
               />
               <button
                 type="submit"
-                className="glow-button w-full px-8 py-3 rounded-full bg-background text-primary font-semibold text-sm tracking-wide"
+                disabled={loading}
+                className="glow-button w-full px-8 py-3 rounded-full bg-background text-primary font-semibold text-sm tracking-wide disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
               >
-                Submit Application →
+                {loading ? (
+                  <>
+                    <Loader2 className="w-4 h-4 animate-spin" />
+                    Submitting...
+                  </>
+                ) : (
+                  "Submit Application →"
+                )}
               </button>
             </form>
           </motion.div>
